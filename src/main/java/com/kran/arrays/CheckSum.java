@@ -1,4 +1,4 @@
-package com.kran.bfs;
+package com.kran.arrays;
 
 import java.util.HashMap;
 import java.util.Iterator;

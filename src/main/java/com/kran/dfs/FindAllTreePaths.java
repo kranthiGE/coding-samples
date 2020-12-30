@@ -1,16 +1,8 @@
-package com.kran.bfs;
+package com.kran.dfs;
 
 import java.util.*;
 
-	class TreeNode {
-	  int val;
-	  TreeNode left;
-	  TreeNode right;
-	
-	  TreeNode(int x) {
-	    val = x;
-	  }
-	};
+import com.kran.TreeNode;
 
 	class FindAllTreePaths {
 	  public static List<List<Integer>> findPaths(TreeNode root, int sum) {

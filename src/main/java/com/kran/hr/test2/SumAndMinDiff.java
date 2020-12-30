@@ -43,32 +43,32 @@ public class SumAndMinDiff {
 		// we could use BFS style to iterate through the array and create an empty set and
 		// in each iteration of the array, for the obtained number, add this number to the each existing value in the set
 		// 4, 5, 8, 9
-		List<List<Integer>> sets = new ArrayList<>();
-		sets.add(new ArrayList<>());
+		List<List<Integer>> rls = new ArrayList<>();
+		rls.add(new ArrayList<>());
 		
 		for(int num: weights) {
 			//System.out.println(num);
 			//System.out.println(sets.size());
-			int max = sets.size();
+			int max = rls.size();
 			for(int i = 0; i < max; i++) {
-				List<Integer> list = new ArrayList<>(sets.get(i));
+				List<Integer> list = new ArrayList<>(rls.get(i));
 				list.add(num);
-				sets.add(list);
+				rls.add(list);
 				//System.out.println(i);
 			}
 		}
 		
 		// print the list
-		sets.stream()
+		rls.stream()
 			.forEach(ls -> System.out.println(ls.toString()));
 		
-		sets.stream()
+		rls.stream()
 			.forEach(ls -> System.out.println(ls.stream()
 												.mapToInt(Integer::intValue)
 												.sum()
 					));
 		
-		for(List<Integer> ls: sets) {
+		for(List<Integer> ls: rls) {
 			int total = ls.stream()
 						.mapToInt(Integer::intValue)
 						.sum();

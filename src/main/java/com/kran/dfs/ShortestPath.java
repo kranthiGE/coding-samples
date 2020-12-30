@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Queue;
 
 public class ShortestPath {
 	public static void main(String[] args) {
-		System.out.println(Arrays.toString(shortestPath(new String[][] {
-				{ "A", "B", "100" }, { "B", "C", "500" }, { "A", "D", "100" },
-				{ "D", "E", "200" }, { "E", "C", "200" } }, "A", "C")));
+		String[][] distance = new String[][] {
+			{ "A", "B", "100" }, { "B", "C", "500" }, { "A", "D", "100" },
+			{ "D", "E", "200" }, { "E", "C", "200" } };
+		shortestPathbyBFS(distance, "A", "C");
+		//System.out.println(Arrays.toString(shortestPath(distance, "A", "C")));
 	}
 	
 	// TODO : converting this to use Nodes and adjacency list for brevity and understandability.
@@ -58,6 +61,49 @@ public class ShortestPath {
 		nodes.add(nodeD);
 		nodes.add(nodeE);
 		return nodes;
+	}
+	
+	private static int findElement(String[][] distance, String src) {
+		for(int i = 0 ; i < distance.length; i++) {
+			if(distance[i][0].equals(src)) {
+				return i;
+			}
+		}
+		
+		return 0;
+	}
+	
+	public static String[] shortestPathbyBFS(String[][] distance, String src,
+			String dest) {
+		
+		boolean[] visisted = new boolean[distance.length];
+		int[] distFromSrc = new int[distance.length];
+		Queue<String> queue = new LinkedList<>();
+		queue.add(src);
+		
+		while(!queue.isEmpty()) {
+			
+			String node = queue.poll();
+			int index = findElement(distance, node);
+			String[] arr = distance[index];
+			
+			if(arr[0].equals(dest)) {
+				// destination reached
+				// need to calculate the distance from source
+			}
+
+			if(!visisted[index]) {
+				// adding next node into queue
+				queue.add(arr[1]);
+				// not visited
+				visisted[index] = true;
+			}
+			
+			
+		}
+		
+		
+		return null;
 	}
 
 	public static String[] shortestPath(String[][] distance, String src,
