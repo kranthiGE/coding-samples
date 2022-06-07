@@ -1,4 +1,4 @@
-package com.sahikran.synchronization;
+package com.kran.concurrency.synchronization;
 
 import java.util.ArrayList;
 import java.util.HashMap;
